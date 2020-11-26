@@ -37,8 +37,28 @@ Neural Engine, Image Signal Processor, NVMe storage controller, Thunderbolt 4 co
 My favorite part, get some stuff and do something fun. Nowadays, there is a big pile of ARM boards all around the world: single board computers (SBC), development kits and barebones from OEMs. For strict order let's discuss them separately.
 
 ### SBC
-They are pure and beautiful like a wind at a temperature far below zero. So, in this contest of my frankensteins, I'll mention only a few of them, 'cause not all hardware is compatible and providing all stuff that need to start.
+They are pure and beautiful like a wind at a temperature far-far below zero. So, in this contest of my frankensteins, I'll mention only a few of them, 'cause not all hardware is compatible and providing all stuff that needs to start.
 
+* [Raspberry PI 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/specifications),
+* [HiKey](https://www.96boards.org/product/hikey/)
 
-# What-A-Mole
+At this moment and in case of SBC, I'm ignoring everything about specs, sizes and etc, the main clue for this educational project is a board capable of working with EDK2 or simply having UEFI. AFAIK there is [UEFI ACPI Working Group (ASWG)](https://uefi.org/workinggroups) that should work on a new standard for ARM based boards for UEFI. You may ask what-a-holy-moly happened here, but as I guess UEFI and EDK2 is part of a big unification process, as that happened at x86, so you may use any ATX power supply with your motherboard or any new OS with default UEFI env. 
+
+In good addition, possibility to add external GPU even with PCIe x1. Its common use-case for older GPUs (Nvidia 1070 and closest relatives, AMD RX 5xx) to work with slow PCI lanes.
+
+Boards which I won't target in some cases: 
+* [Khadas VIM 3](https://www.khadas.com/vim3) – no acpi tree uefi, only uboot efi-for-grub [implementation](https://forum.khadas.com/t/uefi-plans-for-the-vim3/7148), but PCI-e without a pain (ha-ha, just joking, without soldering it will never work).
 [WIP]
+
+#### Raspberry PI 4
+[Experimental repo](https://github.com/pftf/RPi4) – was built on official EDK2, and provides nothing but an UEFI env for booting any OS.
+
+In addition, r-pi 4 could be patched to get access to the PCIe lane (sacrificing the VL805 USB 3.0 controller chip in the process) and it's a good choice for me. 
+
+#### HiKey
+[WikiPage](https://github.com/96boards/documentation/wiki/HiKeyUEFI) - was built on official EDK2, and provides nothing but an UEFI env for booting any OS.
+
+In addition, I can't find any information about external GPUs with HiKey boards or any achievements in getting PCIe lanes available.
+
+PSS: really sad news, that this [repo and user](https://github.com/KNNSpeed/Simple-UEFI-Bootloader-ARM64) is down and any luck to have it restored.
+PS: [lolz](https://community.nxp.com/t5/i-MX-Processors/i-MX8M-UEFI/td-p/754114)
